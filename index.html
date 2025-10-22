@@ -1,193 +1,883 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Maine Credit — Coming Soon</title>
-  <meta name="description" content="MaineCredit.site — business credit help, funding introductions. Launching soon." />
-  <style>
-    :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --accent:#4fd1c5;
-      --muted:#94a3b8;
-      --glass: rgba(255,255,255,0.03);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: linear-gradient(180deg,#071226 0%, #07142a 60%);
-      color:#e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:32px;
-    }
-    .wrap{
-      max-width:920px;
-      width:100%;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.04);
-      border-radius:12px;
-      padding:28px;
-      box-shadow: 0 10px 35px rgba(2,6,23,0.6);
-      display:flex;
-      gap:28px;
-      align-items:center;
-      backdrop-filter: blur(6px);
-    }
-    .brand{
-      width:220px;
-      text-align:center;
-      flex-shrink:0;
-    }
-    .logo{
-      width:96px;height:96px;border-radius:14px;
-      background:linear-gradient(135deg,var(--accent), #2b9aaa);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      font-size:28px;
-      color:#022;
-      box-shadow: 0 6px 18px rgba(47,85,102,0.15);
-      margin-bottom:12px;
-    }
-    .brand h2{margin:0;font-size:18px;letter-spacing:0.2px}
-    .brand p{margin:6px 0 0;font-size:13px;color:var(--muted)}
-    .content{flex:1;min-width:0}
-    h1{margin:0 0 8px;font-size:26px}
-    p.lead{margin:0 0 18px;color:var(--muted);line-height:1.5}
-    .card{
-      background:var(--card);
-      border-radius:10px;
-      padding:16px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      max-width:680px;
-      flex-wrap:wrap;
-    }
-    .count{
-      text-align:center;
-      min-width:100px;
-    }
-    .count strong{display:block;font-size:20px}
-    .form{
-      display:flex;
-      gap:8px;
-      flex:1;
-      min-width:220px;
-    }
-    input[type="email"]{
-      flex:1;
-      padding:10px 12px;
-      border-radius:8px;
-      border:1px solid rgba(255,255,255,0.04);
-      background:transparent;
-      color:inherit;
-      outline:none;
-      font-size:14px;
-    }
-    button{
-      padding:10px 14px;
-      border-radius:8px;
-      border:0;
-      background:var(--accent);
-      color:#012;
-      font-weight:600;
-      cursor:pointer;
-      min-width:110px;
-    }
-    .muted{color:var(--muted);font-size:13px;margin-top:10px}
-    .links{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap}
-    .link-btn{
-      background:var(--glass);
-      padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted);
-      text-decoration:none;border:1px solid rgba(255,255,255,0.02)
-    }
-    footer{margin-top:14px;color:var(--muted);font-size:13px}
-    @media (max-width:720px){
-      .wrap{flex-direction:column; padding:20px}
-      .brand{width:100%;display:flex;justify-content:flex-start;gap:12px}
-      .logo{width:72px;height:72px;font-size:22px}
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Maine Credit — Coming Soon | Business Credit & Funding Solutions</title>
+    <meta name="description"
+        content="Fast business credit solutions and funding introductions for small businesses. Get priority access to our launch offers." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mainecredit.site/" />
+    <meta property="og:title" content="Maine Credit — Business Credit & Funding Solutions" />
+    <meta property="og:description"
+        content="Fast business credit solutions and funding introductions for small businesses." />
+    <meta property="og:image" content="https://mainecredit.site/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mainecredit.site/" />
+    <meta property="twitter:title" content="Maine Credit — Business Credit & Funding Solutions" />
+    <meta property="twitter:description"
+        content="Fast business credit solutions and funding introductions for small businesses." />
+    <meta property="twitter:image" content="https://mainecredit.site/og-image.jpg" />
+
+    <style>
+        :root {
+            --bg: #0f1724;
+            --card: #0b1220;
+            --accent: #4fd1c5;
+            --accent-hover: #3fbdb3;
+            --muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --success: #10b981;
+            --error: #ef4444;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background: linear-gradient(180deg, #071226 0%, #07142a 60%);
+            color: #e6eef6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(79, 209, 197, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .wrap {
+            max-width: 920px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(2, 6, 23, 0.7), 0 0 1px rgba(79, 209, 197, 0.3);
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .brand {
+            width: 220px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            width: 96px;
+            height: 96px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent) 0%, #2b9aaa 100%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 28px;
+            color: #022;
+            box-shadow: 0 8px 24px rgba(79, 209, 197, 0.3);
+            margin-bottom: 14px;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: rotate(0deg) translateY(-100%);
+            }
+
+            100% {
+                transform: rotate(0deg) translateY(100%);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .brand h2 {
+            margin: 0;
+            font-size: 19px;
+            letter-spacing: 0.3px;
+            font-weight: 700
+        }
+
+        .brand p {
+            margin: 8px 0 0;
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.4
+        }
+
+        .content {
+            flex: 1;
+            min-width: 0;
+            max-width: 100%
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e6eef6 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p.lead {
+            margin: 0 0 20px;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .features {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .feature svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.05) 0%, rgba(43, 154, 170, 0.05) 100%);
+            border: 1px solid rgba(79, 209, 197, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            max-width: 680px;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 12px rgba(79, 209, 197, 0.1);
+        }
+
+        .count {
+            text-align: center;
+            min-width: 100px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .count strong {
+            display: block;
+            font-size: 24px;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .form {
+            display: flex;
+            gap: 8px;
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            color: inherit;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="email"]:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 3px rgba(79, 209, 197, 0.1);
+        }
+
+        input[type="email"].error {
+            border-color: var(--error);
+        }
+
+        input[type="email"].success {
+            border-color: var(--success);
+        }
+
+        .validation-msg {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            font-size: 12px;
+            margin-top: 4px;
+            color: var(--error);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .validation-msg.show {
+            opacity: 1;
+        }
+
+        button {
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 0;
+            background: var(--accent);
+            color: #012;
+            font-weight: 700;
+            cursor: pointer;
+            min-width: 120px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover:not(:disabled) {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(79, 209, 197, 0.4);
+        }
+
+        button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        button .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #012;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin: 0 auto;
+        }
+
+        button.loading .spinner {
+            display: block;
+        }
+
+        button.loading .btn-text {
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .signup-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 12px;
+        }
+
+        .signup-count strong {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-top: 12px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .success-message.show {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 14px;
+            line-height: 1.5;
+        }
+
+        .faq {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .faq h3 {
+            font-size: 16px;
+            margin: 0 0 16px;
+            color: #e6eef6;
+            font-weight: 700;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+        }
+
+        .faq-question {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .faq-answer {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .links {
+            margin-top: 18px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            background: var(--glass);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(79, 209, 197, 0.3);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .link-btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        footer {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 13px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        @media (max-width:720px) {
+            body {
+                padding: 30px 20px;
+                min-height: 100vh;
+            }
+
+            .wrap {
+                flex-direction: column;
+                padding: 24px;
+                gap: 24px;
+                align-items: flex-start;
+            }
+
+            .brand {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 16px;
+            }
+
+            .brand>div:last-child {
+                flex: 1;
+            }
+
+            .logo {
+                width: 72px;
+                height: 72px;
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .card {
+                padding: 16px;
+            }
+
+            .count {
+                min-width: 80px;
+            }
+
+            .form {
+                min-width: 100%;
+            }
+
+            .features {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .content {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="wrap" role="main" aria-labelledby="title">
-    <div class="brand" aria-hidden="false">
-      <div class="logo">MC</div>
-      <h2 id="title">MaineCredit.site</h2>
-      <p>Business funding & credit help</p>
-    </div>
+    <!-- Animated particles background -->
+    <div class="particles" id="particles"></div>
 
-    <div class="content">
-      <h1>Coming soon — launch in progress</h1>
-      <p class="lead">We’re building something that helps small businesses secure funding fast. Join our early list to get priority access and launch offers.</p>
-
-      <div class="card" aria-live="polite">
-        <div class="count" title="Estimated launch">
-          <small style="color:var(--muted);font-size:12px">Estimated</small>
-          <strong id="days">—</strong>
-          <small style="display:block;color:var(--muted);font-size:12px">days</small>
+    <div class="wrap" role="main" aria-labelledby="title">
+        <div class="brand">
+            <div class="logo" aria-label="Maine Credit Logo">MC</div>
+            <div>
+                <h2 id="title">MaineCredit.site</h2>
+                <p>Fast business funding & credit solutions</p>
+            </div>
         </div>
 
-        <form class="form" id="signup" onsubmit="handleSubmit(event)" novalidate>
-          <input id="email" type="email" placeholder="Your business email" aria-label="Email address" required />
-          <button type="submit">Get early access</button>
-        </form>
-      </div>
+        <div class="content">
+            <h1>Coming soon — launch in progress</h1>
+            <p class="lead">We connect small businesses with funding opportunities and help build strong business credit
+                profiles. Join our early access list for exclusive launch offers and priority service.</p>
 
-      <div class="muted">No spam. We will only contact you about launch & funding opportunities.</div>
+            <div class="features">
+                <div class="feature">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Fast approval process</span>
+                </div>
+                <div class="feature">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Expert credit guidance</span>
+                </div>
+                <div class="feature">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Vetted lender network</span>
+                </div>
+            </div>
 
-      <div class="links" aria-hidden="false">
-        <a class="link-btn" href="mailto:hello@mainecredit.site">Contact: hello@mainecredit.site</a>
-        <a class="link-btn" href="#" onclick="window.open('https://twitter.com','_blank')">Twitter</a>
-        <a class="link-btn" href="#" onclick="window.open('https://linkedin.com','_blank')">LinkedIn</a>
-      </div>
+            <div class="card" aria-live="polite">
+                <div class="count" title="Days until estimated launch">
+                    <small style="color:var(--muted);font-size:12px;display:block;margin-bottom:4px">Launching
+                        in</small>
+                    <strong id="days">—</strong>
+                    <small style="display:block;color:var(--muted);font-size:12px;margin-top:2px">days</small>
+                </div>
 
-      <footer>© <span id="year"></span> Maine Credit — Built for small businesses</footer>
+                <form class="form" id="signup" novalidate>
+                    <div class="input-wrapper">
+                        <input id="email" type="email" placeholder="your@business-email.com" aria-label="Email address"
+                            aria-describedby="validation-msg" required />
+                        <div id="validation-msg" class="validation-msg" role="alert"></div>
+                    </div>
+                    <button type="submit">
+                        <span class="btn-text">Get early access</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+            </div>
+
+            <div class="signup-count">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                    </path>
+                </svg>
+                <span><strong id="signup-counter">247</strong> businesses already signed up</span>
+            </div>
+
+            <div id="success-msg" class="success-message">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Success! You're on the list. Check your email for confirmation.</span>
+            </div>
+
+            <div class="muted">
+                <strong>No spam promise.</strong> We'll only contact you about our launch, funding opportunities, and
+                credit-building tips you can actually use.
+            </div>
+
+            <div class="faq">
+                <h3>Quick answers</h3>
+                <div class="faq-item">
+                    <div class="faq-question">What do you offer?</div>
+                    <div class="faq-answer">We help small businesses access funding through our vetted lender network
+                        and provide expert guidance on building strong business credit profiles.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Who is this for?</div>
+                    <div class="faq-answer">Small business owners, entrepreneurs, and startups looking for funding
+                        options or wanting to establish and improve their business credit.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What are early access benefits?</div>
+                    <div class="faq-answer">Priority service, discounted rates on our premium offerings, and first
+                        access to our lender network and credit-building tools.</div>
+                </div>
+            </div>
+
+            <div class="links">
+                <a class="link-btn" href="mailto:hello@mainecredit.site">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    hello@mainecredit.site
+                </a>
+                <a class="link-btn" href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                        </path>
+                    </svg>
+                    Twitter
+                </a>
+                <a class="link-btn" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                        </path>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    LinkedIn
+                </a>
+            </div>
+
+            <footer>© <span id="year"></span> Maine Credit — Built for small businesses seeking growth</footer>
+        </div>
     </div>
-  </div>
 
-  <script>
-    // Simple countdown estimate (editable)
-    (function(){
-      // set your expected launch date here (YYYY, M-1, D)
-      const launch = new Date(Date.now() + 1000*60*60*24*14); // default: 14 days from now
-      function updateDays(){
-        const now = new Date();
-        const diff = Math.max(0, launch - now);
-        const days = Math.ceil(diff / (1000*60*60*24));
-        document.getElementById('days').textContent = days;
-      }
-      updateDays();
-      setInterval(updateDays, 1000*60*60);
-      document.getElementById('year').textContent = new Date().getFullYear();
-    })();
+    <script>
+        // Create animated particles
+        (function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 15;
 
-    // Signup handler: mailto fallback
-    function handleSubmit(e){
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      if(!email || !/^\S+@\S+\.\S+$/.test(email)){
-        alert('Please enter a valid email.');
-        return;
-      }
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
 
-      // Try to send via mailto (quick fallback). Replace with API endpoint when ready.
-      const subject = encodeURIComponent('MaineCredit.site — Early access signup');
-      const body = encodeURIComponent('Please add my email to the early access list:\n\n' + email);
-      const mailto = `mailto:hello@mainecredit.site?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
+                const size = Math.random() * 100 + 50;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
 
-      // show a tiny confirmation
-      setTimeout(()=> alert('Thanks — your email client opened. If it didn’t, please email hello@mainecredit.site manually.'), 300);
-    }
-  </script>
+                particlesContainer.appendChild(particle);
+            }
+        })();
+
+        // Countdown timer
+        (function initCountdown() {
+            const launch = new Date(Date.now() + 1000 * 60 * 60 * 24 * 14);
+
+            function updateDays() {
+                const now = new Date();
+                const diff = Math.max(0, launch - now);
+                const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('days').textContent = days;
+            }
+
+            updateDays();
+            setInterval(updateDays, 1000 * 60 * 60);
+            document.getElementById('year').textContent = new Date().getFullYear();
+        })();
+
+        // Signup counter animation
+        (function animateCounter() {
+            const counter = document.getElementById('signup-counter');
+            let count = 0;
+            const target = 247;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+
+            function update() {
+                count += increment;
+                if (count < target) {
+                    counter.textContent = Math.floor(count);
+                    requestAnimationFrame(update);
+                } else {
+                    counter.textContent = target;
+                }
+            }
+
+            setTimeout(update, 500);
+        })();
+
+        // Form handling with validation
+        (function initForm() {
+            const form = document.getElementById('signup');
+            const emailInput = document.getElementById('email');
+            const validationMsg = document.getElementById('validation-msg');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const successMsg = document.getElementById('success-msg');
+            const signupCounter = document.getElementById('signup-counter');
+
+            // Real-time validation
+            emailInput.addEventListener('input', function () {
+                clearValidation();
+            });
+
+            emailInput.addEventListener('blur', function () {
+                if (emailInput.value.trim()) {
+                    validateEmail(false);
+                }
+            });
+
+            function clearValidation() {
+                emailInput.classList.remove('error', 'success');
+                validationMsg.classList.remove('show');
+                validationMsg.textContent = '';
+            }
+
+            function validateEmail(showSuccess = true) {
+                const email = emailInput.value.trim();
+
+                if (!email) {
+                    showError('Email is required');
+                    return false;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    showError('Please enter a valid email address');
+                    return false;
+                }
+
+                if (showSuccess) {
+                    emailInput.classList.remove('error');
+                    emailInput.classList.add('success');
+                }
+                return true;
+            }
+
+            function showError(message) {
+                emailInput.classList.remove('success');
+                emailInput.classList.add('error');
+                validationMsg.textContent = message;
+                validationMsg.classList.add('show');
+            }
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                if (!validateEmail(true)) {
+                    emailInput.focus();
+                    return;
+                }
+
+                const email = emailInput.value.trim();
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+
+                // Simulate API call (replace with actual endpoint)
+                try {
+                    await simulateAPICall(email);
+
+                    // Success!
+                    successMsg.classList.add('show');
+                    emailInput.value = '';
+                    clearValidation();
+
+                    // Update counter
+                    const currentCount = parseInt(signupCounter.textContent);
+                    signupCounter.textContent = currentCount + 1;
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMsg.classList.remove('show');
+                    }, 5000);
+
+                } catch (error) {
+                    showError('Something went wrong. Please try again.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('loading');
+                }
+            });
+
+            // Simulate API call - replace with actual backend
+            async function simulateAPICall(email) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        // Store in memory (replace with actual API)
+                        console.log('Email signup:', email);
+
+                        // For production, replace with:
+                        // fetch('YOUR_API_ENDPOINT', {
+                        //   method: 'POST',
+                        //   headers: { 'Content-Type': 'application/json' },
+                        //   body: JSON.stringify({ email })
+                        // })
+
+                        resolve();
+                    }, 1500);
+                });
+            }
+        })();
+
+        // Analytics tracking (add your tracking ID)
+        // (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        // new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        // j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        // 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        // })(window,document,'script','dataLayer','GTM-XXXXXXX');
+    </script>
 </body>
+
 </html>
