@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maine Credit — Coming Soon</title>
+  <meta name="description" content="MaineCredit.site — business credit help, funding introductions. Launching soon." />
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#4fd1c5;
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#071226 0%, #07142a 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+    .wrap{
+      max-width:920px;
+      width:100%;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:12px;
+      padding:28px;
+      box-shadow: 0 10px 35px rgba(2,6,23,0.6);
+      display:flex;
+      gap:28px;
+      align-items:center;
+      backdrop-filter: blur(6px);
+    }
+    .brand{
+      width:220px;
+      text-align:center;
+      flex-shrink:0;
+    }
+    .logo{
+      width:96px;height:96px;border-radius:14px;
+      background:linear-gradient(135deg,var(--accent), #2b9aaa);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:28px;
+      color:#022;
+      box-shadow: 0 6px 18px rgba(47,85,102,0.15);
+      margin-bottom:12px;
+    }
+    .brand h2{margin:0;font-size:18px;letter-spacing:0.2px}
+    .brand p{margin:6px 0 0;font-size:13px;color:var(--muted)}
+    .content{flex:1;min-width:0}
+    h1{margin:0 0 8px;font-size:26px}
+    p.lead{margin:0 0 18px;color:var(--muted);line-height:1.5}
+    .card{
+      background:var(--card);
+      border-radius:10px;
+      padding:16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      max-width:680px;
+      flex-wrap:wrap;
+    }
+    .count{
+      text-align:center;
+      min-width:100px;
+    }
+    .count strong{display:block;font-size:20px}
+    .form{
+      display:flex;
+      gap:8px;
+      flex:1;
+      min-width:220px;
+    }
+    input[type="email"]{
+      flex:1;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;
+      color:inherit;
+      outline:none;
+      font-size:14px;
+    }
+    button{
+      padding:10px 14px;
+      border-radius:8px;
+      border:0;
+      background:var(--accent);
+      color:#012;
+      font-weight:600;
+      cursor:pointer;
+      min-width:110px;
+    }
+    .muted{color:var(--muted);font-size:13px;margin-top:10px}
+    .links{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap}
+    .link-btn{
+      background:var(--glass);
+      padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted);
+      text-decoration:none;border:1px solid rgba(255,255,255,0.02)
+    }
+    footer{margin-top:14px;color:var(--muted);font-size:13px}
+    @media (max-width:720px){
+      .wrap{flex-direction:column; padding:20px}
+      .brand{width:100%;display:flex;justify-content:flex-start;gap:12px}
+      .logo{width:72px;height:72px;font-size:22px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main" aria-labelledby="title">
+    <div class="brand" aria-hidden="false">
+      <div class="logo">MC</div>
+      <h2 id="title">MaineCredit.site</h2>
+      <p>Business funding & credit help</p>
+    </div>
+
+    <div class="content">
+      <h1>Coming soon — launch in progress</h1>
+      <p class="lead">We’re building something that helps small businesses secure funding fast. Join our early list to get priority access and launch offers.</p>
+
+      <div class="card" aria-live="polite">
+        <div class="count" title="Estimated launch">
+          <small style="color:var(--muted);font-size:12px">Estimated</small>
+          <strong id="days">—</strong>
+          <small style="display:block;color:var(--muted);font-size:12px">days</small>
+        </div>
+
+        <form class="form" id="signup" onsubmit="handleSubmit(event)" novalidate>
+          <input id="email" type="email" placeholder="Your business email" aria-label="Email address" required />
+          <button type="submit">Get early access</button>
+        </form>
+      </div>
+
+      <div class="muted">No spam. We will only contact you about launch & funding opportunities.</div>
+
+      <div class="links" aria-hidden="false">
+        <a class="link-btn" href="mailto:hello@mainecredit.site">Contact: hello@mainecredit.site</a>
+        <a class="link-btn" href="#" onclick="window.open('https://twitter.com','_blank')">Twitter</a>
+        <a class="link-btn" href="#" onclick="window.open('https://linkedin.com','_blank')">LinkedIn</a>
+      </div>
+
+      <footer>© <span id="year"></span> Maine Credit — Built for small businesses</footer>
+    </div>
+  </div>
+
+  <script>
+    // Simple countdown estimate (editable)
+    (function(){
+      // set your expected launch date here (YYYY, M-1, D)
+      const launch = new Date(Date.now() + 1000*60*60*24*14); // default: 14 days from now
+      function updateDays(){
+        const now = new Date();
+        const diff = Math.max(0, launch - now);
+        const days = Math.ceil(diff / (1000*60*60*24));
+        document.getElementById('days').textContent = days;
+      }
+      updateDays();
+      setInterval(updateDays, 1000*60*60);
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+
+    // Signup handler: mailto fallback
+    function handleSubmit(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if(!email || !/^\S+@\S+\.\S+$/.test(email)){
+        alert('Please enter a valid email.');
+        return;
+      }
+
+      // Try to send via mailto (quick fallback). Replace with API endpoint when ready.
+      const subject = encodeURIComponent('MaineCredit.site — Early access signup');
+      const body = encodeURIComponent('Please add my email to the early access list:\n\n' + email);
+      const mailto = `mailto:hello@mainecredit.site?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+
+      // show a tiny confirmation
+      setTimeout(()=> alert('Thanks — your email client opened. If it didn’t, please email hello@mainecredit.site manually.'), 300);
+    }
+  </script>
+</body>
+</html>
